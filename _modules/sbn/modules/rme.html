@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sbn.modules.rme &#8212; Skull, Bones and Number (OTP-CR-117/19)</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sbn.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sbn.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Skull, Bones and Number (OTP-CR-117/19)"
+          href="../../../_static/opensearch.xml"/>
+    <link rel="icon" href="../../../_static/skull.jpg"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for sbn.modules.rme</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This file is placed in the Public Domain.</span>
+<span class="c1">#</span>
+<span class="c1"># pylint: disable=R,C</span>
+
+
+<span class="sd">&quot;&quot;&quot;NAME</span>
+
+<span class="sd">    SBN - Skull, Bones and Number (OTP-CR-117/19)</span>
+
+<span class="sd">SYNOPSIS</span>
+
+<span class="sd">    sbn &lt;cmd&gt; [key=val] [key==val]</span>
+<span class="sd">    sbn [-a] [-c] [-d] [-v]</span>
+
+<span class="sd">DESCRIPTION</span>
+
+<span class="sd">    SBN holds evidence that king netherlands is doing a genocide, a</span>
+<span class="sd">    written response where king netherlands confirmed taking note of </span>
+<span class="sd">    “what i have written”, namely proof that medicine he uses in</span>
+<span class="sd">    treatement laws like zyprexa, haldol, abilify and clozapine are</span>
+<span class="sd">    poison that make impotent, is both physical (contracted muscles)</span>
+<span class="sd">    and mental (make people hallucinate) torture and kills members</span>
+<span class="sd">    of the victim groups. </span>
+
+<span class="sd">    SBN contains correspondence with the International Criminal Court,</span>
+<span class="sd">    asking for arrest of the king of the netherlands, for the genocide</span>
+<span class="sd">    he is committing with his new treatement laws. Current status is</span>
+<span class="sd">    &quot;no basis to proceed&quot; judgement of the prosecutor which requires a</span>
+<span class="sd">    &quot;basis to prosecute&quot; to have the king actually arrested.</span>
+
+<span class="sd">INSTALL</span>
+
+<span class="sd">    $ pipx install sbn</span>
+
+<span class="sd">USAGE</span>
+
+<span class="sd">    without any argument the bot does nothing</span>
+
+<span class="sd">    $ sbn</span>
+<span class="sd">    $</span>
+
+<span class="sd">    see list of commands</span>
+
+<span class="sd">    $ sbn cmd</span>
+<span class="sd">    cfg,cmd,mre,now,pwd</span>
+
+<span class="sd">    start a console</span>
+
+<span class="sd">    $ sbn -c </span>
+<span class="sd">    &gt;</span>
+
+<span class="sd">    use -v for verbose</span>
+
+<span class="sd">    $ sbn -cv</span>
+<span class="sd">     SBN started CV started Sat Dec 2 17:53:24 2023</span>
+<span class="sd">     &gt;</span>
+
+<span class="sd">    start daemon</span>
+
+<span class="sd">    $ sbnd</span>
+<span class="sd">    $ </span>
+
+<span class="sd">    show request to the prosecutor</span>
+
+<span class="sd">    $ sbn req</span>
+<span class="sd">    Information and Evidence Unit</span>
+<span class="sd">    Office of the Prosecutor</span>
+<span class="sd">    Post Office Box 19519</span>
+<span class="sd">    2500 CM The Hague</span>
+<span class="sd">    The Netherlands</span>
+
+<span class="sd">    show how many died in the WvGGZ</span>
+
+<span class="sd">    $ sbn now</span>
+<span class="sd">    4y18d patient #47324 died from mental illness (14/32/11682) every 44m59s</span>
+<span class="sd">     </span>
+<span class="sd">CONFIGURATION</span>
+
+<span class="sd">    irc</span>
+
+<span class="sd">    $ sbn cfg server=&lt;server&gt;</span>
+<span class="sd">    $ sbn cfg channel=&lt;channel&gt;</span>
+<span class="sd">    $ sbn cfg nick=&lt;nick&gt;</span>
+
+<span class="sd">    sasl</span>
+
+<span class="sd">    $ sbn pwd &lt;nsvnick&gt; &lt;nspass&gt;</span>
+<span class="sd">    $ sbn cfg password=&lt;frompwd&gt;</span>
+
+<span class="sd">    rss</span>
+
+<span class="sd">    $ sbn rss &lt;url&gt;</span>
+<span class="sd">    $ sbn dpl &lt;url&gt; &lt;item1,item2&gt;</span>
+<span class="sd">    $ sbn rem &lt;url&gt;</span>
+<span class="sd">    $ sbn nme &lt;url&lt; &lt;name&gt;</span>
+
+<span class="sd">COMMANDS</span>
+
+<span class="sd">    cfg - irc configuration</span>
+<span class="sd">    cmd - commands</span>
+<span class="sd">    mre - displays cached output</span>
+<span class="sd">    now - show genocide stats</span>
+<span class="sd">    pwd - sasl nickserv name/pass</span>
+<span class="sd">    req - reconsider</span>
+<span class="sd">    wsd - show wisdom</span>
+
+<span class="sd">SYSTEMD</span>
+
+<span class="sd">    save the following it in /etc/systems/system/sbn.service and</span>
+<span class="sd">    replace &quot;&lt;user&gt;&quot; with the user running pipx</span>
+
+
+<span class="sd">    [Unit]</span>
+<span class="sd">    Description=Skull, Bones and Number (OTP-CR-117/19)</span>
+<span class="sd">    Requires=network-online.target</span>
+<span class="sd">    After=network-online.target</span>
+<span class="sd">    </span>
+<span class="sd">    [Service]</span>
+<span class="sd">    Type=simple</span>
+<span class="sd">    User=&lt;user&gt;</span>
+<span class="sd">    Group=&lt;user&gt;</span>
+<span class="sd">    WorkingDirectory=/home/&lt;user&gt;/.sbn</span>
+<span class="sd">    ExecStart=/home/&lt;user&gt;/.local/pipx/venvs/sbn/bin/sbnd</span>
+<span class="sd">    RemainAfterExit=yes</span>
+<span class="sd">    </span>
+<span class="sd">    [Install]</span>
+<span class="sd">    WantedBy=multi-user.target</span>
+
+
+<span class="sd">    then run this</span>
+
+<span class="sd">    $ mkdir ~/.sbn</span>
+<span class="sd">    $ sudo systemctl enable sbn --now</span>
+
+<span class="sd">    default channel/server is #sbn on localhost</span>
+
+<span class="sd">FILES</span>
+
+<span class="sd">    ~/.sbn</span>
+<span class="sd">    ~/.local/bin/sbn</span>
+<span class="sd">    ~/.local/bin/sbnd</span>
+<span class="sd">    ~/.local/pipx/venvs/sbn/</span>
+
+<span class="sd">AUTHOR</span>
+
+<span class="sd">    OTP-CR-117/19 &lt;skullbonesandnumber@gmail.com&gt;</span>
+
+<span class="sd">COPYRIGHT</span>
+
+<span class="sd">    SBN is Public Domain.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="fm">__dir__</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="s2">&quot;rme&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="fm">__dir__</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="rme"><a class="viewcode-back" href="../../../sbn.modules.rme.html#sbn.modules.rme.rme">[docs]</a><span class="k">def</span> <span class="nf">rme</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">reply</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
