@@ -130,7 +130,8 @@
     <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">txtlist</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">channel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Output</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
             <span class="n">Output</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">Output</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">txtlist</span><span class="p">)</span></div>
+        <span class="n">chanlist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">Output</span><span class="o">.</span><span class="n">cache</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>
+        <span class="n">chanlist</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">txtlist</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Output.gettxt"><a class="viewcode-back" href="../../../sbn.modules.irc.html#sbn.modules.irc.Output.gettxt">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">gettxt</span><span class="p">(</span><span class="n">channel</span><span class="p">):</span>
